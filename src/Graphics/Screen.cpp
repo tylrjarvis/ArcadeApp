@@ -62,7 +62,7 @@ void Screen::SwapScreens()
     {
         ClearScreen();
 
-        SDL_BlitSurface(mBackBuffer.GetSurface(), nullptr, windowSurface, nullptr);
+        SDL_BlitSurfaceScaled(mBackBuffer.GetSurface(), nullptr, windowSurface, nullptr, SDL_SCALEMODE_LINEAR);
 
         SDL_UpdateWindowSurface(mWindow);
 
