@@ -1,5 +1,5 @@
-#ifndef SHAPRES_SHAPE_H_
-#define SHAPRES_SHAPE_H_
+#ifndef SHAPES_SHAPE_H_
+#define SHAPES_SHAPE_H_
 
 #include "Vec2D.h"
 #include <vector>
