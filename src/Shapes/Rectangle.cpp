@@ -1,5 +1,4 @@
 #include "Rectangle.h"
-#include "Utils.h"
 #include <cmath>
 
 Rectangle::Rectangle(): Rectangle(Vec2D::Zero, Vec2D::Zero)
