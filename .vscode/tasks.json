@@ -23,6 +23,8 @@
                 "${workspaceFolder}/src/Graphics/ScreenBuffer.cpp",
                 "${workspaceFolder}/src/Graphics/Screen.cpp",
                 "${workspaceFolder}/src/Shapes/Line2D.cpp",
+                "${workspaceFolder}/src/Shapes/Shape.cpp",
+                "${workspaceFolder}/src/Shapes/Triangle.cpp",
                 "${workspaceFolder}/src/Utils/Vec2D.cpp",
                 "${workspaceFolder}/src/Utils/Utils.cpp",
                 "-o",  // Output file option
