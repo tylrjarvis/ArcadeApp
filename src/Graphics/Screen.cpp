@@ -1,6 +1,7 @@
 #include "Screen.h"
 #include "Vec2D.h"
 #include "Line2D.h"
+#include "Triangle.h"
 #include <SDL3/SDL.h>
 #include <cassert>
 #include <cmath>
@@ -154,4 +155,15 @@ void Screen::Draw(const Line2D& line, const Color& color)
             }
         }
     }
+}
+
+void Screen::Draw(const Triangle& triangle, const Color& color)
+{
+    Line2D p0p1 = Line2D(triangle.GetP0(), triangle.GetP1());
+    Line2D p1p2 = Line2D(triangle.GetP1(), triangle.GetP2());
+    Line2D p2p0 = Line2D(triangle.GetP2(), triangle.GetP0());
+
+    Draw(p0p1, color);
+    Draw(p1p2, color);
+    Draw(p2p0, color);
 }
