@@ -26,6 +26,7 @@
                 "${workspaceFolder}/src/Shapes/Shape.cpp",
                 "${workspaceFolder}/src/Shapes/Triangle.cpp",
                 "${workspaceFolder}/src/Shapes/Rectangle.cpp",
+                "${workspaceFolder}/src/Shapes/Circle.cpp",
                 "${workspaceFolder}/src/Utils/Vec2D.cpp",
                 "${workspaceFolder}/src/Utils/Utils.cpp",
                 "-o",  // Output file option
