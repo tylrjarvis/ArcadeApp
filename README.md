@@ -6,4 +6,4 @@ To run this program:
 5. Modify the libs section in 'tasks.json' to point to the SDL3 library
 6. Run the program from the entry point on ArcadeApp.cpp
 
-NOTE: The SDL3.dll may need to be placed in the project root
+NOTE: The SDL3.dll may need to be placed in the project source folder: https://github.com/libsdl-org/SDL
