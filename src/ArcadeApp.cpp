@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
     screen.Draw(triangle, Color::Red());
     screen.Draw(rectangle, Color::Pink());
-    screen.Draw(circle, Color::Blue());
+    screen.Draw(circle, Color::Purple());
     screen.SwapScreens();
 
     // Main loop setup

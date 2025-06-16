@@ -25,6 +25,7 @@ class Color
         static Color Cyan() {return Color(37, 240, 217, 255);}
         static Color Pink() {return Color(252, 197, 224, 255);}
         static Color Orange() {return Color(245, 190, 100, 255);}
+        static Color Purple() {return Color(128, 0, 128, 255);}
 
         Color(): Color(0){}
         Color(uint32_t color): mColor(color){}
