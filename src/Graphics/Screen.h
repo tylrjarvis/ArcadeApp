@@ -9,6 +9,7 @@ class Vec2D;
 class Line2D;
 class Triangle;
 class Rectangle;
+class Circle;
 struct SDL_Window;
 struct SDL_Surface;
 
@@ -43,5 +44,6 @@ class Screen {
         void Draw(const Line2D& line, const Color& color);
         void Draw(const Triangle& triangle, const Color& color);
         void Draw(const Rectangle& rectangle, const Color& color);
+        void Draw(const Circle& circle, const Color& color);
 };
 #endif
