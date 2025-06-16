@@ -2,6 +2,7 @@
 #include "Vec2D.h"
 #include "Line2D.h"
 #include "Triangle.h"
+#include "Rectangle.h"
 #include <SDL3/SDL.h>
 #include <cassert>
 #include <cmath>
@@ -159,11 +160,34 @@ void Screen::Draw(const Line2D& line, const Color& color)
 
 void Screen::Draw(const Triangle& triangle, const Color& color)
 {
-    Line2D p0p1 = Line2D(triangle.GetP0(), triangle.GetP1());
-    Line2D p1p2 = Line2D(triangle.GetP1(), triangle.GetP2());
-    Line2D p2p0 = Line2D(triangle.GetP2(), triangle.GetP0());
+    assert(mWindow);
+    if(mWindow)
+    {
+        Line2D p0p1 = Line2D(triangle.GetP0(), triangle.GetP1());
+        Line2D p1p2 = Line2D(triangle.GetP1(), triangle.GetP2());
+        Line2D p2p0 = Line2D(triangle.GetP2(), triangle.GetP0());
 
-    Draw(p0p1, color);
-    Draw(p1p2, color);
-    Draw(p2p0, color);
+        Draw(p0p1, color);
+        Draw(p1p2, color);
+        Draw(p2p0, color);
+    }
+}
+
+void Screen::Draw(const Rectangle& rectangle, const Color& color)
+{
+    assert(mWindow);
+    if(mWindow)
+    {
+        std::vector<Vec2D> points = rectangle.GetPoints();
+
+        Line2D p0p1 = Line2D(points[0], points[1]);
+        Line2D p1p2 = Line2D(points[1], points[2]);
+        Line2D p2p3 = Line2D(points[2], points[3]);
+        Line2D p3p0 = Line2D(points[3], points[0]);
+
+        Draw(p0p1, color);
+        Draw(p1p2, color);
+        Draw(p2p3, color);
+        Draw(p3p0, color);
+    }
 }
