@@ -20,9 +20,9 @@ int main(int argc, char* argv[])
     Rectangle rectangle = {Vec2D(SCREEN_WIDTH/2 - 25, SCREEN_HEIGHT/2 - 25), 50, 50};
     Circle circle {Vec2D(SCREEN_WIDTH/2 + 50, SCREEN_HEIGHT/2 + 50), 50};
 
-    screen.Draw(triangle, Color::Red());
-    screen.Draw(rectangle, Color::Pink());
-    screen.Draw(circle, Color::Purple());
+    screen.Draw(triangle, Color::Red(), true, Color::Red());
+    screen.Draw(rectangle, Color::Pink(), true, Color::Pink());
+    screen.Draw(circle, Color::Purple(), true, Color::Purple());
     screen.SwapScreens();
 
     // Main loop setup
