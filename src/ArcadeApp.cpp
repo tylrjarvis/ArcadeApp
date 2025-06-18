@@ -22,7 +22,8 @@ int main(int argc, char* argv[])
 
     screen.Draw(triangle, Color::Red(), true, Color::Red());
     screen.Draw(rectangle, Color::Pink(), true, Color::Pink());
-    screen.Draw(circle, Color::Purple(), true, Color::Purple());
+    //screen.Draw(circle, Color::Purple(), true, Color::Purple());
+    screen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
     screen.SwapScreens();
 
     // Main loop setup

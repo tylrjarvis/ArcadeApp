@@ -46,7 +46,7 @@ SDL_Window* Screen::Init(uint32_t width, uint32_t height, uint32_t mag)
     {
         windowSurface = SDL_GetWindowSurface(mWindow);
 
-        const SDL_PixelFormatDetails* pixelFormatDetails = SDL_GetPixelFormatDetails(windowSurface->format);
+        const SDL_PixelFormatDetails* pixelFormatDetails = SDL_GetPixelFormatDetails(SDL_PIXELFORMAT_RGBA8888);
 
         Color::InitColorFormat(pixelFormatDetails);
 

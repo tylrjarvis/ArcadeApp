@@ -15,6 +15,8 @@ class Color
         static const SDL_PixelFormatDetails* mFormat;
         static void InitColorFormat(const SDL_PixelFormatDetails* formatDetails);
 
+        static Color Evaluate1MinusSourceAlpha(const Color& source, const Color& destination);
+
         static Color Black() {return Color(0, 0, 0, 255);}
         static Color White() {return Color(255, 255, 255, 255);}
         static Color Red() {return Color(255, 0, 0, 255);}
