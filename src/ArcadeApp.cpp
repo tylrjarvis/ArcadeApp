@@ -3,6 +3,9 @@
 #include "Color.h"
 #include "Screen.h"
 #include "Line2D.h"
+#include "Triangle.h"
+#include "Rectangle.h"
+#include "Circle.h"
 // Constants
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -12,9 +15,15 @@ int main(int argc, char* argv[])
 {
     Screen screen;
     screen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
-    //screen.Draw((SCREEN_WIDTH-1)/2, (SCREEN_HEIGHT-1)/2, Color::Red());
     Line2D line = {Vec2D(0, 0), Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT)};
-    screen.Draw(line, Color::Red());
+    Triangle triangle = {Vec2D(60, 10), Vec2D(10, 110), Vec2D(110, 110)};
+    Rectangle rectangle = {Vec2D(SCREEN_WIDTH/2 - 25, SCREEN_HEIGHT/2 - 25), 50, 50};
+    Circle circle {Vec2D(SCREEN_WIDTH/2 + 50, SCREEN_HEIGHT/2 + 50), 50};
+
+    screen.Draw(triangle, Color::Red(), true, Color::Red());
+    screen.Draw(rectangle, Color::Pink(), true, Color::Pink());
+    //screen.Draw(circle, Color::Purple(), true, Color::Purple());
+    screen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
     screen.SwapScreens();
 
     // Main loop setup
