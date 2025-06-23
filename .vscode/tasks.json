@@ -16,6 +16,8 @@
                 "${workspaceFolder}/src/Utils",
                 "-I",  // Include path for Shapes directory
                 "${workspaceFolder}/src/Shapes",
+                "-I",  // Include path for Shapes directory
+                "${workspaceFolder}/src/App",
                 "-L",  // Library path for SDL3
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/lib",
                 "${file}",  // The current active file
@@ -29,6 +31,7 @@
                 "${workspaceFolder}/src/Shapes/Circle.cpp",
                 "${workspaceFolder}/src/Utils/Vec2D.cpp",
                 "${workspaceFolder}/src/Utils/Utils.cpp",
+                "${workspaceFolder}/src/App/App.cpp",
                 "-o",  // Output file option
                 "${fileDirname}/${fileBasenameNoExtension}.exe",  // Output executable location
                 "-lSDL3",  // Link with SDL3 static library (placed after source file)

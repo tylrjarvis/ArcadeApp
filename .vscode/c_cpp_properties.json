@@ -7,7 +7,8 @@
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/include",
                 "${workspaceFolder}/src/Utils",
                 "${workspaceFolder}/src/Graphics",
-                "${workspaceFolder}/src/Shapes"
+                "${workspaceFolder}/src/Shapes",
+                "${workspaceFolder}/src/App"
             ],
             "defines": [
                 "_DEBUG",
