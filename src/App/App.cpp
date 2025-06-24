@@ -1,5 +1,6 @@
 #include "App.h"
 #include <SDL3/SDL.h>
+#include <iostream> 
 #include "Color.h"
 #include "Line2D.h"
 #include "Triangle.h"
@@ -26,19 +27,31 @@ void App::Run()
         Rectangle rectangle = {Vec2D(mScreen.GetWidth()/2 - 25, mScreen.GetWidth()/2 - 25), 50, 50};
         Circle circle {Vec2D(mScreen.GetWidth()/2 + 50, mScreen.GetWidth()/2 + 50), 50};
         
-        mScreen.Draw(triangle, Color::Red(), true, Color::Red());
-        mScreen.Draw(rectangle, Color::Pink(), true, Color::Pink());
-        //mScreen.Draw(circle, Color::Purple(), true, Color::Purple());
-        mScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
-        mScreen.SwapScreens();
-        
         // Main loop setup
         SDL_Event event;
         bool running = true;
         
+        uint64_t lastTick = SDL_GetTicks();
+        uint64_t currentTick = lastTick;
+        uint64_t dt = 10;
+        uint64_t accumulator = 0;
+
         // Main loop
         while (running)
         {
+            currentTick = SDL_GetTicks();
+            uint64_t frameTime = currentTick - lastTick;
+
+            if(frameTime > 300)
+            {
+                frameTime = 300;
+            }
+
+            lastTick = currentTick;
+
+            accumulator += frameTime;
+
+            //Input
             while (SDL_PollEvent(&event))
             {
                 switch (event.type)
@@ -50,6 +63,19 @@ void App::Run()
                         break;
                 }
             }
+
+            //Update
+            while(accumulator >= dt)
+            {
+                //Update current scene by dt
+                accumulator -= dt;
+            }
+
+            //Render
+            mScreen.Draw(triangle, Color::Red(), true, Color::Red());
+            mScreen.Draw(rectangle, Color::Pink(), true, Color::Pink());
+            mScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
+            mScreen.SwapScreens();
         }
     }
 }

@@ -16,8 +16,10 @@
                 "${workspaceFolder}/src/Utils",
                 "-I",  // Include path for Shapes directory
                 "${workspaceFolder}/src/Shapes",
-                "-I",  // Include path for Shapes directory
+                "-I",  // Include path for App directory
                 "${workspaceFolder}/src/App",
+                "-I",  // Include path for Scenes directory
+                "${workspaceFolder}/src/Scenes",
                 "-L",  // Library path for SDL3
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/lib",
                 "${file}",  // The current active file
