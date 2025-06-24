@@ -20,6 +20,8 @@ class App
         Screen mScreen;
         SDL_Window* mnoptrWindow;
         App() {};
+        App(const App&) = delete;
+        App& operator=(const App&) = delete;
 };
 
 #endif /* APP_APP_H */
