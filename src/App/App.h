@@ -3,6 +3,9 @@
 
 #include "Screen.h"
 #include <stdint.h>
+#include <vector>
+#include <memory>
+#include "Scene.h"
 
 struct SDL_Window;
 
@@ -16,9 +19,14 @@ class App
         inline uint32_t GetWidth() const {return mScreen.GetWidth();}
         inline uint32_t GetHeight() const {return mScreen.GetHeight();}
 
+        void PushScene(std::unique_ptr<Scene> scene);
+        void PopScene();
+        Scene* TopScene();
+
     private:
         Screen mScreen;
         SDL_Window* mnoptrWindow;
+        std::vector<std::unique_ptr<Scene>> mSceneStack;
         App() {};
         App(const App&) = delete;
         App& operator=(const App&) = delete;

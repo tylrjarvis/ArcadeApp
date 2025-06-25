@@ -1,8 +1,8 @@
 #include "App.h"
+#include "ArcadeScene.h"
 #include <SDL3/SDL.h>
 #include <iostream> 
-#include "ArcadeScene.h"
-#include <memory>
+#include <cassert>
 
 App& App::Singleton()
 {
@@ -13,8 +13,13 @@ App& App::Singleton()
 bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
 {
     mnoptrWindow = mScreen.Init(width, height, mag);
+
+    std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
+    PushScene(std::move(arcadeScene));
+
     return mnoptrWindow != nullptr;
 }
+
 void App::Run()
 {
     if(mnoptrWindow)
@@ -27,9 +32,6 @@ void App::Run()
         uint64_t currentTick = lastTick;
         uint64_t dt = 10;
         uint64_t accumulator = 0;
-
-        std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
-        arcadeScene->Init();
 
         // Main loop
         while (running)
@@ -59,16 +61,56 @@ void App::Run()
                 }
             }
 
-            //Update
-            while(accumulator >= dt)
+            Scene* topScene = App::TopScene();
+            assert(topScene && "Ensure that a scene exists");
+            if(topScene)
             {
-                arcadeScene->Update(dt);
-                accumulator -= dt;
+                //Update
+                while(accumulator >= dt)
+                {
+                    topScene->Update(dt);
+                    accumulator -= dt;
+                }
+
+                //Render
+                topScene->Draw(mScreen);
             }
 
-            //Render
-            arcadeScene->Draw(mScreen);
             mScreen.SwapScreens();
         }
     }
+}
+
+void App::PushScene(std::unique_ptr<Scene> scene)
+{
+    assert(scene && "Don't push a nullptr to the scene stack");
+    if(scene)
+    {
+        scene->Init();
+        mSceneStack.emplace_back(std::move(scene));
+        SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
+    }
+}
+
+void App::PopScene()
+{
+    if(mSceneStack.size() > 1)
+    {
+        mSceneStack.pop_back();
+    }
+
+    if(TopScene())
+    {
+        SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
+    }
+}
+
+Scene* App::TopScene()
+{
+    if(mSceneStack.empty())
+    {
+        return nullptr;
+    }
+    
+    return mSceneStack.back().get();
 }
