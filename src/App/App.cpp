@@ -1,11 +1,8 @@
 #include "App.h"
 #include <SDL3/SDL.h>
 #include <iostream> 
-#include "Color.h"
-#include "Line2D.h"
-#include "Triangle.h"
-#include "Rectangle.h"
-#include "Circle.h"
+#include "ArcadeScene.h"
+#include <memory>
 
 App& App::Singleton()
 {
@@ -21,12 +18,7 @@ bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
 void App::Run()
 {
     if(mnoptrWindow)
-    {
-        Line2D line = {Vec2D(0, 0), Vec2D(mScreen.GetWidth(), mScreen.GetHeight())};
-        Triangle triangle = {Vec2D(60, 10), Vec2D(10, 110), Vec2D(110, 110)};
-        Rectangle rectangle = {Vec2D(mScreen.GetWidth()/2 - 25, mScreen.GetWidth()/2 - 25), 50, 50};
-        Circle circle {Vec2D(mScreen.GetWidth()/2 + 50, mScreen.GetWidth()/2 + 50), 50};
-        
+    {   
         // Main loop setup
         SDL_Event event;
         bool running = true;
@@ -35,6 +27,9 @@ void App::Run()
         uint64_t currentTick = lastTick;
         uint64_t dt = 10;
         uint64_t accumulator = 0;
+
+        std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
+        arcadeScene->Init();
 
         // Main loop
         while (running)
@@ -67,14 +62,12 @@ void App::Run()
             //Update
             while(accumulator >= dt)
             {
-                //Update current scene by dt
+                arcadeScene->Update(dt);
                 accumulator -= dt;
             }
 
             //Render
-            mScreen.Draw(triangle, Color::Red(), true, Color::Red());
-            mScreen.Draw(rectangle, Color::Pink(), true, Color::Pink());
-            mScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
+            arcadeScene->Draw(mScreen);
             mScreen.SwapScreens();
         }
     }
