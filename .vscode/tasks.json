@@ -20,6 +20,8 @@
                 "${workspaceFolder}/src/App",
                 "-I",  // Include path for Scenes directory
                 "${workspaceFolder}/src/Scenes",
+                "-I",  // Include path for Scenes directory
+                "${workspaceFolder}/src/Input",
                 "-L",  // Library path for SDL3
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/lib",
                 "${file}",  // The current active file
@@ -35,6 +37,7 @@
                 "${workspaceFolder}/src/Utils/Utils.cpp",
                 "${workspaceFolder}/src/App/App.cpp",
                 "${workspaceFolder}/src/Scenes/ArcadeScene.cpp",
+                "${workspaceFolder}/src/Input/GameController.cpp",
                 "-o",  // Output file option
                 "${fileDirname}/${fileBasenameNoExtension}.exe",  // Output executable location
                 "-lSDL3",  // Link with SDL3 static library (placed after source file)
