@@ -21,9 +21,8 @@ void ArcadeScene::Init()
     {
         if(GameController::IsPressed(state))
         {
-
+            std::cout << "Action button pressed!" << std::endl;
         }
-        std::cout << "Action button pressed!" << std::endl;
     };
 
     mGameController.AddInputActionForKey(action);
