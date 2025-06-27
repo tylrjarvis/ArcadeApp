@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 #include "Scene.h"
+#include "InputController.h"
 
 struct SDL_Window;
 
@@ -30,6 +31,7 @@ class App
         App() {};
         App(const App&) = delete;
         App& operator=(const App&) = delete;
+        InputController mInputController;
 };
 
 #endif /* APP_APP_H */

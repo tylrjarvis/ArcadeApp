@@ -38,6 +38,7 @@
                 "${workspaceFolder}/src/App/App.cpp",
                 "${workspaceFolder}/src/Scenes/ArcadeScene.cpp",
                 "${workspaceFolder}/src/Input/GameController.cpp",
+                "${workspaceFolder}/src/Input/InputController.cpp",
                 "-o",  // Output file option
                 "${fileDirname}/${fileBasenameNoExtension}.exe",  // Output executable location
                 "-lSDL3",  // Link with SDL3 static library (placed after source file)

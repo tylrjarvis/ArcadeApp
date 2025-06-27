@@ -3,7 +3,7 @@
 #include <SDL3/SDL.h>
 #include <iostream> 
 #include <cassert>
-
+#include "InputController.h"
 App& App::Singleton()
 {
     static App theApp;
@@ -33,6 +33,12 @@ void App::Run()
         uint64_t dt = 10;
         uint64_t accumulator = 0;
 
+        //Input
+        mInputController.Init([&running](uint32_t dt, InputState state)
+        {
+            running = false;
+        });
+
         // Main loop
         while (running)
         {
@@ -48,18 +54,7 @@ void App::Run()
 
             accumulator += frameTime;
 
-            //Input
-            while (SDL_PollEvent(&event))
-            {
-                switch (event.type)
-                {
-                    case SDL_EVENT_QUIT:
-                        running = false;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            mInputController.Update(dt);
 
             Scene* topScene = App::TopScene();
             assert(topScene && "Ensure that a scene exists");
@@ -87,6 +82,7 @@ void App::PushScene(std::unique_ptr<Scene> scene)
     if(scene)
     {
         scene->Init();
+        mInputController.SetGameController(scene->GetGameController());
         mSceneStack.emplace_back(std::move(scene));
         SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
     }
@@ -101,6 +97,7 @@ void App::PopScene()
 
     if(TopScene())
     {
+        mInputController.SetGameController(TopScene()->GetGameController());
         SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
     }
 }
