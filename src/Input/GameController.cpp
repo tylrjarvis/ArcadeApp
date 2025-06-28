@@ -3,7 +3,7 @@
 #define BUTTON_RELEASED 0
 #define BUTTON_PRESSED 1
 
-GameController::GameController()
+GameController::GameController(): mMouseMovedAction(nullptr)
 {
 
 }
@@ -69,4 +69,32 @@ InputKey GameController::UpKey()
 InputKey GameController::DownKey()
 {
     return static_cast<InputKey>(SDLK_DOWN);
+}
+
+MouseInputAction GameController::GetMouseButtonActionForMouseButton(MouseButton button)
+{
+    for(const auto& mouseButtonAction: mMouseButtonActions)
+    {
+        if(button == mouseButtonAction.mouseButton)
+        {
+            return mouseButtonAction.mouseInputAction;
+        }
+    }
+
+    return [](InputState, MousePosition){};
+}
+
+void GameController::AddMouseButtonAction(const MouseButtonAction& mouseButtonAction)
+{
+    mMouseButtonActions.push_back(mouseButtonAction);
+}
+
+MouseButton GameController::LeftMouseButton()
+{
+    return static_cast<MouseButton>(SDL_BUTTON_LEFT);
+}
+
+MouseButton GameController::RightMouseButton()
+{
+    return static_cast<MouseButton>(SDL_BUTTON_RIGHT);
 }
