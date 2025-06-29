@@ -44,7 +44,7 @@ class FileCommandLoader
         static char ReadChar(const ParseFuncParams& params);
 
     private:
-        std::vector<Command> mComamnds;
+        std::vector<Command> mCommands;
 };
 
 #endif /* UTILS_FILECOMMANDLOADER_H_ */
