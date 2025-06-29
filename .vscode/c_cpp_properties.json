@@ -10,7 +10,8 @@
                 "${workspaceFolder}/src/Shapes",
                 "${workspaceFolder}/src/App",
                 "${workspaceFolder}/src/Scenes",
-                "${workspaceFolder}/src/Input"
+                "${workspaceFolder}/src/Input",
+                "${workspaceFolder}/src/Games"
             ],
             "defines": [
                 "_DEBUG",

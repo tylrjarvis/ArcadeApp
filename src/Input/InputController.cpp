@@ -12,7 +12,7 @@ void InputController::Init(InputAction quitAction)
     mQuit = quitAction;
 }
 
-void InputController::Update(uint32_t dt)
+void InputController::Update(uint64_t dt)
 {
     SDL_Event sdlEvent;
 

@@ -20,8 +20,10 @@
                 "${workspaceFolder}/src/App",
                 "-I",  // Include path for Scenes directory
                 "${workspaceFolder}/src/Scenes",
-                "-I",  // Include path for Scenes directory
+                "-I",  // Include path for Input directory
                 "${workspaceFolder}/src/Input",
+                "-I",  // Include path for Games directory
+                "${workspaceFolder}/src/Games",
                 "-L",  // Library path for SDL3
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/lib",
                 "${file}",  // The current active file
