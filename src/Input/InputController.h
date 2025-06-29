@@ -10,7 +10,7 @@ class InputController
     public:
         InputController();
         void Init(InputAction quitAction);
-        void Update(uint32_t dt);
+        void Update(uint64_t dt);
         void SetGameController(GameController* controller);
         
     private:
