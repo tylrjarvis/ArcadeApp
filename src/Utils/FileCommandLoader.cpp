@@ -35,7 +35,14 @@ Color FileCommandLoader::ReadColor(const ParseFuncParams& params)
 
 Vec2D FileCommandLoader::ReadSize(const ParseFuncParams& params)
 {
+    size_t nextSpacePos = params.line.find_first_of(" ", params.delimitPos+1);
+    int width = std::stoi(params.line.substr(params.delimitPos, (nextSpacePos - params.delimitPos)));
+    
+    size_t lastSpacePos = nextSpacePos;
+    nextSpacePos = params.line.find_first_of(" ", lastSpacePos + 1);
+    int height = std::stoi(params.line.substr(lastSpacePos+1, nextSpacePos - lastSpacePos));
 
+    return Vec2D(width, height);
 }
 
 int FileCommandLoader::ReadInt(const ParseFuncParams& params)
