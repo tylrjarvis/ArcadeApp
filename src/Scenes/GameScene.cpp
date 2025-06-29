@@ -20,8 +20,8 @@ void GameScene::Draw(Screen& screen)
     mGame->Draw(screen);
 }
 
-const std::string& GetSceneName()
+const std::string& GameScene::GetSceneName() const
 {
-    std::string name = "";
+    static std::string name = "";
     return name;
 }
