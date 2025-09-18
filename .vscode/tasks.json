@@ -24,6 +24,8 @@
                 "${workspaceFolder}/src/Input",
                 "-I",  // Include path for Games directory
                 "${workspaceFolder}/src/Games",
+                "-I",  // Include path for Breakout directory
+                "${workspaceFolder}/src/Games/Breakout",
                 "-L",  // Library path for SDL3
                 "C:/Libraries/SDL3-3.1.3/x86_64-w64-mingw32/lib",
                 "${file}",  // The current active file
@@ -43,7 +45,7 @@
                 "${workspaceFolder}/src/Input/GameController.cpp",
                 "${workspaceFolder}/src/Input/InputController.cpp",
                 "${workspaceFolder}/src/Scenes/GameScene.cpp",
-                "${workspaceFolder}/src/Games/Breakout.cpp",
+                "${workspaceFolder}/src/Games/Breakout/Breakout.cpp",
                 "-o",  // Output file option
                 "${fileDirname}/${fileBasenameNoExtension}.exe",  // Output executable location
                 "-lSDL3",  // Link with SDL3 static library (placed after source file)

@@ -11,7 +11,8 @@
                 "${workspaceFolder}/src/App",
                 "${workspaceFolder}/src/Scenes",
                 "${workspaceFolder}/src/Input",
-                "${workspaceFolder}/src/Games"
+                "${workspaceFolder}/src/Games",
+                "${workspaceFolder}/src/Games/Breakout"
             ],
             "defines": [
                 "_DEBUG",
