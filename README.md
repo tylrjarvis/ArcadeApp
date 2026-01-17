@@ -1,32 +1,27 @@
 # ArcadeApp — Retro Arcade Games in C++ (SDL3)
 
-
-
 ArcadeApp is a collection of retro-style games built in C++ using SDL3. The project demonstrates real-time game loops, input handling, rendering, and modular game states.
 
-
+---
 
 ## Features
 
 - Game loop \& timing logic (work-in-progress)
-
 - Input system (work-in-progress)
-
 - Rendering with SDL3 
-
 - Multiple mini-games (work-in-progress)
+- Modular architecture
 
-- Modular architecture 
-
-
+---
 
 ## Tech Stack
 
-- C++ / SDL3
+- **Language:** C++
+- **Library:** SDL3
+- **Build Tools:** CMake / build tools
+- **Platform:** Windows
 
-- CMake / build tools
-
-
+---
 
 ## Getting Started
 
